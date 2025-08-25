@@ -2,18 +2,11 @@
 
 include_once '../inc/database.php';  
  // Fetch orders
-    $sql = 'SELECT * FROM message'; 
+      $sql = 'SELECT event.title,eventmedia.* FROM eventmedia 
+            INNER JOIN event ON eventmedia.eventId = event.id'; 
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $rows = $stmt->fetchAll();
-
-    
-
-    
-
-
-
-
 
 
 
@@ -143,7 +136,7 @@ if (isset($_POST['edit'])) {
 
             <div class="p-4 md:p-6">
 
-                <div class="max-w-7xl mx-auto bg-white p-6 rounded-xl shadow" x-data="messageTable()" x-init="init()">
+                <div class="max-w-7xl mx-auto bg-white p-6 rounded-xl shadow" x-data="eventMediaTable()" x-init="init()">
                     <div class="flex justify-end mb-4">
                         <button class="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded"
                             onclick="window.location.href='create-event-media';">
@@ -153,7 +146,7 @@ if (isset($_POST['edit'])) {
 
                     
                     <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
-                        <h1 class="text-xl font-semibold text-gray-800">Donation History</h1>
+                        <h1 class="text-xl font-semibold text-gray-800">Event Media History</h1>
                         <input type="text" placeholder="Search..."
                             class="w-full md:w-1/3 px-4 py-2 border rounded-lg focus:ring focus:ring-blue-200 focus:outline-none"
                             x-model="search" @input="filterRows()" />
@@ -164,11 +157,10 @@ if (isset($_POST['edit'])) {
                             <thead class="bg-gray-100 text-gray-700 font-semibold">
                                 <tr>
                                     <th class="px-4 py-2 text-left">ID</th>
-                                    <th class="px-4 py-2 text-left">Full Name</th>
-                                    <th class="px-4 py-2 text-left">Email</th>
-                                    <th class="px-4 py-2 text-left">Subject</th>
-                                    <th class="px-4 py-2 text-left">Message</th>      
-                                    <th class="px-4 py-2 text-left">Date</th>                                                                   
+                                    <th class="px-4 py-2 text-left">Event Title</th>
+                                    <th class="px-4 py-2 text-left">File Path</th>
+                                    <th class="px-4 py-2 text-left">Media Type</th>                                        
+                                    <th class="px-4 py-2 text-left">Upload Date</th>                                                                  
                                     <th class="px-4 py-2 text-left">Action</th>
                                     
 
@@ -179,11 +171,10 @@ if (isset($_POST['edit'])) {
                                 <template x-for="row in paginatedRows()" :key="row.id">
                                     <tr class="hover:bg-gray-50 border-b">
                                         <td class="px-4 py-2" x-text="row.id"></td>
-                                        <td class="px-4 py-2" x-text="row.fullName"></td>
-                                        <td class="px-4 py-2" x-text="row.email"></td>
-                                        <td class="px-4 py-2" x-text="row.subject"></td>
-                                        <td class="px-4 py-2" x-text="row.message"></td>                                        
-                                        <td class="px-4 py-2" x-text="row.messageDate"></td>
+                                        <td class="px-4 py-2" x-text="row.title"></td>
+                                        <td class="px-4 py-2" x-text="row.filepath"></td>
+                                        <td class="px-4 py-2" x-text="row.mediaType"></td>                                                                               
+                                        <td class="px-4 py-2" x-text="row.uploadDate"></td>
 
                                         <td class="border border-gray-300 p-2 flex gap-2">
                                             <button @click="showModal(row, false)"
@@ -230,38 +221,34 @@ if (isset($_POST['edit'])) {
 
 
                                         <div>
-                                            <label class="block text-sm font-medium mb-1">Full Name</label>
-                                            <input type="text" x-model="modalData.fullName" name="fullName"
+                                            <label class="block text-sm font-medium mb-1">Title</label>
+                                            <input type="text" x-model="modalData.title" 
                                                 class="w-full border rounded-lg p-2" :readonly="!isEditing"
                                                 :class="!isEditing ? 'bg-gray-50' : ''">
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-medium mb-1">Email</label>
-                                            <input type="email" x-model="modalData.email" name="email"
-                                                class="w-full border rounded-lg p-2" :readonly="!isEditing"
-                                                :class="!isEditing ? 'bg-gray-50' : ''">
-                                        </div>
-
-                                        <div>
-                                            <label class="block text-sm font-medium mb-1">Subject</label>
-                                            <input type="text" x-model="modalData.subject" name="subject"
+                                            <label class="block text-sm font-medium mb-1">File Path</label>
+                                            <input type="text" x-model="modalData.filepath" name="filepath"
                                                 class="w-full border rounded-lg p-2" :readonly="!isEditing"
                                                 :class="!isEditing ? 'bg-gray-50' : ''">
                                         </div>
 
                                         <div>
-                                            <label class="block text-sm font-medium mb-1"> Message</label>
-                                            <textarea class="md:col-span-2" type="text" x-model="modalData.message"
-                                                class="w-full border rounded-lg p-2" :readonly="!isEditing"
-                                                :class="!isEditing ? 'bg-gray-50' : ''" name="message"
-                                                placeholder="message"> </textarea>
-                                        </div>
+                                            <label class="block text-sm font-medium mb-1">Media Type</label>
+                                            <select x-model="modalData.mediaType" class="w-full border rounded-lg p-2"
+                                                name="mediaType" :disabled="!isEditing"
+                                                :class="!isEditing ? 'bg-gray-50' : ''">
+                                                <template x-for="m in mediaTypes" :key="m">
+                                                    <option :value="m" x-text="m"></option>
+                                                </template>
+                                            </select>
+                                        </div>                                       
 
                                         
                                         <!-- Date -->
                                         <div>
-                                            <label class="block text-sm font-medium mb-1">Date</label>
-                                            <input type="date" x-model="modalData.dateISO" name="messageDate"
+                                            <label class="block text-sm font-medium mb-1">Upload Date</label>
+                                            <input type="date" x-model="modalData.dateISO" name="uploadDate"
                                                 class="w-full border rounded-lg p-2" :disabled="!isEditing"
                                                 :class="!isEditing ? 'bg-gray-50' : ''">
                                         </div>
@@ -293,7 +280,7 @@ if (isset($_POST['edit'])) {
                     <!-- Pagination -->
                     <div class="flex flex-col md:flex-row justify-between items-center mt-6 space-y-4 md:space-y-0">
                         <p class="text-sm text-gray-600"
-                            x-text="`Showing ${startIndex + 1} to ${Math.min(endIndex(), filtered.length)} of ${filtered.length} orders`">
+                            x-text="`Showing ${startIndex + 1} to ${Math.min(endIndex(), filtered.length)} of ${filtered.length} event media`">
                         </p>
                         <div class="flex items-center space-x-1">
                             <button class="px-3 py-1 border rounded hover:bg-gray-200" @click="prevPage"
@@ -317,7 +304,7 @@ if (isset($_POST['edit'])) {
 
 
     <script>
-    const messagesFromPHP = <?php echo json_encode($rows, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>;
+    const eventMediaFromPHP = <?php echo json_encode($rows, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>;
 
     function formatDate(dateStr) {
         const date = new Date(dateStr);
@@ -328,7 +315,7 @@ if (isset($_POST['edit'])) {
         });
     }
 
-    function messageTable() {
+    function eventMediaTable() {
         return {
             search: '',
             currentPage: 1,
@@ -340,6 +327,7 @@ if (isset($_POST['edit'])) {
             modalOpen: false,
             isEditing: false,
             modalData: {},
+            mediaTypes: ['image', 'video'],
           
 
             // helpers
@@ -362,17 +350,17 @@ if (isset($_POST['edit'])) {
             },
 
             init() {
-                this.rows = messagesFromPHP.map(message => {                    
-                    const rawDate = message.messageDate ?? new Date().toISOString();
+                this.rows = eventMediaFromPHP.map(eventMedia => {                    
+                    const rawDate = eventMedia.uploadDate ?? new Date().toISOString();
                     const iso = this.toISODate(rawDate);
                     return {
-                        id: message.id,
-                        fullName: message.fullName,
-                        email: message.email,                        
-                        subject: message.subject, 
-                        message: message.message,                        
+                        id: eventMedia.id,
+                        title: eventMedia.title,
+                        filepath: eventMedia.filepath,                        
+                        mediaType: eventMedia.mediaType, 
+                        uploadDate: this.formatDisplayDate(iso),                       
                         dateISO: iso, // yyyy-mm-dd for input[type=date]
-                        messageDate: this.formatDisplayDate(iso) // pretty for table
+                        
                     };
                 });
                 this.filtered = this.rows;
@@ -417,12 +405,11 @@ if (isset($_POST['edit'])) {
                     const iso = this.modalData.dateISO || this.toISODate(new Date());
                     this.rows[i] = {
                         ...this.rows[i],
-                        fullName: this.modalData.fullName,
-                        email: this.modalData.email,
-                        subject: this.modalData.subject,
-                        message: this.modalData.message,
+                        title: this.modalData.title,
+                        filepath: this.modalData.filepath,
+                        mediaType: this.modalData.mediaType,                      
                         dateISO: iso,
-                        messageDate: this.formatDisplayDate(iso)
+                        uploadDate: this.formatDisplayDate(iso)
                     };
                     // refresh filtered so table reflects changes immediately
                     this.filterRows();
@@ -444,7 +431,7 @@ if (isset($_POST['edit'])) {
                     confirmButtonText: "Yes, delete it"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        fetch('delete-message.php', {
+                        fetch('delete-event-media.php', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/x-www-form-urlencoded'
