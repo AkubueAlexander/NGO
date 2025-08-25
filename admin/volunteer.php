@@ -2,10 +2,12 @@
 
 include_once '../inc/database.php';  
  // Fetch orders
-    $sql = 'SELECT * FROM donation'; 
+    $sql = 'SELECT * FROM volunteer'; 
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $rows = $stmt->fetchAll();
+
+    
 
     
 
@@ -159,8 +161,8 @@ if (isset($_POST['edit'])) {
                                     <th class="px-4 py-2 text-left">Full Name</th>
                                     <th class="px-4 py-2 text-left">Email</th>
                                     <th class="px-4 py-2 text-left">Area of Interest</th>
-                                    <th class="px-4 py-2 text-left">Message</th>
-                                    <th class="px-4 py-2 text-left">Phone</th>                                    
+                                    <th class="px-4 py-2 text-left">Message</th>      
+                                    <th class="px-4 py-2 text-left">Date</th>                                                                   
                                     <th class="px-4 py-2 text-left">Action</th>
                                     
 
@@ -174,8 +176,7 @@ if (isset($_POST['edit'])) {
                                         <td class="px-4 py-2" x-text="row.fullName"></td>
                                         <td class="px-4 py-2" x-text="row.email"></td>
                                         <td class="px-4 py-2" x-text="row.areaOfInterest"></td>
-                                        <td class="px-4 py-2" x-text="row.message"></td>
-                                        <td class="px-4 py-2" x-text="row.phone"></td>
+                                        <td class="px-4 py-2" x-text="row.message"></td>                                        
                                         <td class="px-4 py-2" x-text="row.volunteerDate"></td>
 
                                         <td class="border border-gray-300 p-2 flex gap-2">
@@ -221,12 +222,6 @@ if (isset($_POST['edit'])) {
                                         </div>
 
 
-                                        <div>
-                                            <label class="block text-sm font-medium mb-1">Amount</label>
-                                            <input type="number" step="0.01" x-model.number="modalData.amountValue" name="amount"
-                                                class="w-full border rounded-lg p-2" :readonly="!isEditing"
-                                                :class="!isEditing ? 'bg-gray-50' : ''">
-                                        </div>
 
                                         <div>
                                             <label class="block text-sm font-medium mb-1">Full Name</label>
@@ -242,15 +237,29 @@ if (isset($_POST['edit'])) {
                                         </div>
 
                                         <div>
-                                            <label class="block text-sm font-medium mb-1">Phone</label>
-                                            <input type="phone" x-model="modalData.phone" name="phone"
-                                                class="w-full border rounded-lg p-2" :readonly="!isEditing"
+                                            <label class="block text-sm font-medium mb-1">Area of Interest</label>
+                                            <select x-model="modalData.areaOfInterest" class="w-full border rounded-lg p-2"
+                                                name="areaOfInterest" :disabled="!isEditing"
                                                 :class="!isEditing ? 'bg-gray-50' : ''">
+                                                <template x-for="s in areaOfInterests" :key="s">
+                                                    <option :value="s" x-text="s"></option>
+                                                </template>
+                                            </select>
                                         </div>
+
+                                        <div>
+                                            <label class="block text-sm font-medium mb-1"> Message</label>
+                                            <textarea class="md:col-span-2" type="text" x-model="modalData.message"
+                                                class="w-full border rounded-lg p-2" :readonly="!isEditing"
+                                                :class="!isEditing ? 'bg-gray-50' : ''" name="message"
+                                                placeholder="message"> </textarea>
+                                        </div>
+
+                                        
                                         <!-- Date -->
                                         <div>
                                             <label class="block text-sm font-medium mb-1">Date</label>
-                                            <input type="date" x-model="modalData.dateISO" name="donationDate"
+                                            <input type="date" x-model="modalData.dateISO" name="volunteerDate"
                                                 class="w-full border rounded-lg p-2" :disabled="!isEditing"
                                                 :class="!isEditing ? 'bg-gray-50' : ''">
                                         </div>
@@ -329,7 +338,7 @@ if (isset($_POST['edit'])) {
             modalOpen: false,
             isEditing: false,
             modalData: {},
-            statuses: ['Community Outreach', 'Event Support', 'Digital Media'],
+            areaOfInterests: ['Community Outreach', 'Event Support', 'Digital Media'],
 
             // helpers
             toISODate(dateStr) {
@@ -355,13 +364,13 @@ if (isset($_POST['edit'])) {
                     const rawDate = volunteer.volunteerDate ?? new Date().toISOString();
                     const iso = this.toISODate(rawDate);
                     return {
-                        id: donation.id,
+                        id: volunteer.id,
                         fullName: volunteer.fullName,
                         email: volunteer.email,                        
                         areaOfInterest: volunteer.areaOfInterest, 
                         message: volunteer.message,                        
                         dateISO: iso, // yyyy-mm-dd for input[type=date]
-                        volunteernDate: this.formatDisplayDate(iso) // pretty for table
+                        volunteerDate: this.formatDisplayDate(iso) // pretty for table
                     };
                 });
                 this.filtered = this.rows;
@@ -402,18 +411,16 @@ if (isset($_POST['edit'])) {
             saveEdit() {
                 // apply modal changes back to table row
                 const i = this.rows.findIndex(r => r.id === this.modalData.id);
-                if (i !== -1) {
-                    const amountNum = Number(this.modalData.amountValue) || 0;
+                if (i !== -1) {                
                     const iso = this.modalData.dateISO || this.toISODate(new Date());
                     this.rows[i] = {
                         ...this.rows[i],
                         fullName: this.modalData.fullName,
                         email: this.modalData.email,
-                        amountValue: amountNum,
-                        amount: `$${amountNum.toFixed(2)}`,
-                        phone: this.modalData.phone,
+                        areaOfInterest: this.modalData.areaOfInterest,
+                        message: this.modalData.message,
                         dateISO: iso,
-                        date: this.formatDisplayDate(iso)
+                        volunteerDate: this.formatDisplayDate(iso)
                     };
                     // refresh filtered so table reflects changes immediately
                     this.filterRows();
@@ -435,7 +442,7 @@ if (isset($_POST['edit'])) {
                     confirmButtonText: "Yes, delete it"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        fetch('delete-donation.php', {
+                        fetch('delete-volunteer.php', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -447,9 +454,9 @@ if (isset($_POST['edit'])) {
                                 if (data.success) {
                                     this.rows = this.rows.filter(r => r.id !== id); // remove from table
                                     this.filterRows();
-                                    Swal.fire("Deleted!", "Donation has been deleted.", "success");
+                                    Swal.fire("Deleted!", "Volunteer row has been deleted.", "success");
                                 } else {
-                                    Swal.fire("Error", data.message || "Could not delete order.", "error");
+                                    Swal.fire("Error", data.message || "Could not delete volunteer.", "error");
                                 }
                             })
                             .catch(() => {

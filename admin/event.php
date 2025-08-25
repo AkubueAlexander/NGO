@@ -501,7 +501,7 @@ if (isset($_POST['edit'])) {
                                     this.filterRows();
                                     Swal.fire("Deleted!", "Event has been deleted.", "success");
                                 } else {
-                                    Swal.fire("Error", data.message || "Could not delete order.", "error");
+                                    Swal.fire("Error", data.message || "Could not delete event.", "error");
                                 }
                             })
                             .catch(() => {

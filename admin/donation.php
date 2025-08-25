@@ -455,7 +455,7 @@ if (isset($_POST['edit'])) {
                                     this.filterRows();
                                     Swal.fire("Deleted!", "Donation has been deleted.", "success");
                                 } else {
-                                    Swal.fire("Error", data.message || "Could not delete order.", "error");
+                                    Swal.fire("Error", data.message || "Could not delete donation.", "error");
                                 }
                             })
                             .catch(() => {
