@@ -1,4 +1,8 @@
 <?php
+ session_start();
+    if (!isset($_SESSION['id'])) {
+         header('location: login');
+    } 
 
 include_once '../inc/database.php';  
  // Fetch orders
@@ -8,32 +12,31 @@ include_once '../inc/database.php';
     $stmt->execute();
     $rows = $stmt->fetchAll();
 
+   
+
 
 
 if (isset($_POST['edit'])) {
 
-        $input = $_POST['messageDate']; 
+        $input = $_POST['uploadDate']; 
         $time = "13:19:52";  
         $datetime = strtotime($input . ' ' . $time);
         $mysqlTimestamp = date("Y-m-d H:i:s", $datetime);
 
         $id = $_POST['id'];               
-        $subject = $_POST['subject'];
-        $fullName = $_POST['fullName'];
-        $email = $_POST['email'];    
-        $message = $_POST['message'];
-        $messageDate = $mysqlTimestamp;      
+        $filepath = $_POST['filepath'];
+        $mediaType = $_POST['mediaType'];        
+        $uploadDate = $mysqlTimestamp;      
         
     
-        $update_sql = 'UPDATE message SET subject = :subject,fullName = :fullName,email = :email,subject = :subject,
-        messageDate = :messageDate
+        $update_sql = 'UPDATE eventmedia SET filepath = :filepath,mediaType = :mediaType,uploadDate = :uploadDate
         Where id = :id ';
         $update = $pdo->prepare($update_sql);        
-        $update->execute(['amount' => $amount,
-        'fullName' => $fullName,'email' => $email,'subject' => $subject,'messageDate' => $messageDate,'id' => $id]);
+        $update->execute(['filepath' => $filepath,
+        'mediaType' => $mediaType,'uploadDate' => $uploadDate,'id' => $id]);
         
     
-       header("Location: message?updated=true");
+       header("Location: event-media?updated=true");
         exit;
 
     
@@ -69,7 +72,18 @@ if (isset($_POST['edit'])) {
         if (isset($_GET['updated'])) {
             echo "<script>
                 Swal.fire({
-                    title: 'Message Table Updated Successfully',
+                    title: 'Event Media Table Updated Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            </script>";
+        }
+        ?>
+        <?php
+        if (isset($_GET['created'])) {
+            echo "<script>
+                Swal.fire({
+                    title: 'Event Media Inserted Successfully',
                     icon: 'success',
                     confirmButtonText: 'OK'
                 });

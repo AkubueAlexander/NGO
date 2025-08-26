@@ -10,10 +10,18 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+    $sql = 'SELECT * FROM event ORDER BY startDate DESC LIMIT 6'; 
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $rows = $stmt->fetchAll();
 
-session_start();
+
+
+
+
 
   if (isset($_POST['submit'])) {
+    session_start();
     $amount = $_POST['amount'];
     $fullName = $_POST['fullName'];
     $email = $_POST['email'];
@@ -54,7 +62,7 @@ session_start();
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
         CURLOPT_TIMEOUT => 30,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POSTFIELDS => json_encode($data),
         CURLOPT_HTTPHEADER => [
@@ -251,7 +259,7 @@ session_start();
         }
         ?>
 
-        <?php
+    <?php
         if (isset($_GET['message'])) {
             echo "<script>
                 Swal.fire({
@@ -263,7 +271,7 @@ session_start();
         }
         ?>
 
-        <?php
+    <?php
         if (isset($_GET['volunteer'])) {
             echo "<script>
                 Swal.fire({
@@ -380,8 +388,8 @@ session_start();
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="lg:w-1/2">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
-                            alt="Widows supporting each other" class="rounded-2xl shadow-xl w-full h-auto" />
+                        <img src="ceo.jpg" alt="Widows supporting each other"
+                            class="rounded-2xl shadow-xl w-full h-auto" />
                         <div
                             class="absolute -bottom-6 -right-6 bg-pink-500 text-white text-center py-3 px-6 rounded-xl shadow-lg z-10 animate-float">
                             <span class="block text-2xl font-bold font-playfair">15+</span>
@@ -728,66 +736,24 @@ session_start();
             <h2 class="text-3xl font-extrabold text-rose-700">Events Gallery</h2>
             <p class="mt-2 text-gray-600">Events from past activities.</p>
             <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <?php foreach ($rows as $row): ?>
                 <figure class="group relative overflow-hidden rounded-2xl border border-rose-100 bg-white text-center">
-                    <img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=800&auto=format&fit=crop"
-                        alt="Outreach" class="w-full h-56 object-cover group-hover:scale-105 transition" />
-                    <figcaption class="p-4 text-sm">Medical outreach clinic – free screenings</figcaption>
-                    <button onclick="window.location.href='advocacy.html'"
-                        class="mt-3 mb-4 block mx-auto px-4 py-2 text-sm font-medium text-white bg-rose-600 rounded-xl hover:bg-rose-700 transition">
-                        Explore
-                    </button>
+                    <img src="admin/<?php echo $row->banner ?>" alt="Outreach"
+                        class="w-full max-h-80 object-contain group-hover:scale-105 transition" />
 
-                </figure>
-                <figure class="group relative overflow-hidden rounded-2xl border border-rose-100 bg-white text-center">
-                    <img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=800&auto=format&fit=crop"
-                        alt="Outreach" class="w-full h-56 object-cover group-hover:scale-105 transition" />
-                    <figcaption class="p-4 text-sm">Medical outreach clinic – free screenings</figcaption>
-                    <button onclick="window.location.href='advocacy.html'"
-                        class="mt-3 mb-4 block mx-auto px-4 py-2 text-sm font-medium text-white bg-rose-600 rounded-xl hover:bg-rose-700 transition">
-                        Explore
-                    </button>
+                    <figcaption class="p-4 text-sm">
+                        <?php echo $row->title ?>
+                    </figcaption>
 
-                </figure>
-                <figure class="group relative overflow-hidden rounded-2xl border border-rose-100 bg-white text-center">
-                    <img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=800&auto=format&fit=crop"
-                        alt="Outreach" class="w-full h-56 object-cover group-hover:scale-105 transition" />
-                    <figcaption class="p-4 text-sm">Medical outreach clinic – free screenings</figcaption>
-                    <button onclick="window.location.href='advocacy.html'"
+                    <button onclick="window.location.href='event-detail?title=<?php echo $row->title ?>& id=<?php echo $row->id ?>'"
                         class="mt-3 mb-4 block mx-auto px-4 py-2 text-sm font-medium text-white bg-rose-600 rounded-xl hover:bg-rose-700 transition">
-                        Explore
+                        View Detail
                     </button>
-
                 </figure>
-                <figure class="group relative overflow-hidden rounded-2xl border border-rose-100 bg-white text-center">
-                    <img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=800&auto=format&fit=crop"
-                        alt="Outreach" class="w-full h-56 object-cover group-hover:scale-105 transition" />
-                    <figcaption class="p-4 text-sm">Medical outreach clinic – free screenings</figcaption>
-                    <button onclick="window.location.href='advocacy.html'"
-                        class="mt-3 mb-4 block mx-auto px-4 py-2 text-sm font-medium text-white bg-rose-600 rounded-xl hover:bg-rose-700 transition">
-                        Explore
-                    </button>
 
-                </figure>
-                <figure class="group relative overflow-hidden rounded-2xl border border-rose-100 bg-white text-center">
-                    <img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=800&auto=format&fit=crop"
-                        alt="Outreach" class="w-full h-56 object-cover group-hover:scale-105 transition" />
-                    <figcaption class="p-4 text-sm">Medical outreach clinic – free screenings</figcaption>
-                    <button onclick="window.location.href='advocacy.html'"
-                        class="mt-3 mb-4 block mx-auto px-4 py-2 text-sm font-medium text-white bg-rose-600 rounded-xl hover:bg-rose-700 transition">
-                        Explore
-                    </button>
 
-                </figure>
-                <figure class="group relative overflow-hidden rounded-2xl border border-rose-100 bg-white text-center">
-                    <img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=800&auto=format&fit=crop"
-                        alt="Outreach" class="w-full h-56 object-cover group-hover:scale-105 transition" />
-                    <figcaption class="p-4 text-sm">Medical outreach clinic – free screenings</figcaption>
-                    <button onclick="window.location.href='advocacy.html'"
-                        class="mt-3 mb-4 block mx-auto px-4 py-2 text-sm font-medium text-white bg-rose-600 rounded-xl hover:bg-rose-700 transition">
-                        Explore
-                    </button>
+                <?php endforeach; ?>
 
-                </figure>
 
             </div>
         </div>

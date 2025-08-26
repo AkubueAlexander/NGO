@@ -1,10 +1,20 @@
 <?php
 
+  session_start();
+    if (!isset($_SESSION['id'])) {
+         header('location: login');
+    }
+
     include_once '../inc/database.php';  
     $sql = "SELECT COUNT(*) AS total_event FROM event";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $totalEvent = $stmt->fetchColumn();
+
+    $sqlSum = "SELECT SUM(amount) AS total_donations FROM donation";
+    $stmtSum = $pdo->prepare($sqlSum);
+    $stmtSum->execute();
+    $donationSum = $stmtSum->fetchColumn();
 
     $sqlVolunteer = "SELECT COUNT(*) AS total_volunteer FROM volunteer";
     $stmtVolunteer = $pdo->prepare($sqlVolunteer);
@@ -116,7 +126,7 @@
                         <div class="flex items-center justify-between">
                             <div>
                                 <h2 class="text-gray-600 text-sm">Donations</h2>
-                                <p class="text-xl md:text-2xl font-bold text-green-600">$45,300</p>
+                                <p class="text-xl md:text-2xl font-bold text-green-600">$<?php echo number_format($donationSum, 2 ) ?></p>
                             </div>
                             <i class="fa-solid fa-hand-holding-dollar text-2xl md:text-3xl text-green-500"></i>
                         </div>

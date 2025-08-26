@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healing Heart Admin Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- Add SweetAlert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-    // Toggle sidebar
-    function toggleSidebar() {
-        document.getElementById("sidebar").classList.toggle("-translate-x-full");
+<?php
+  session_start();
+    if (!isset($_SESSION['id'])) {
+         header('location: login');
     }
-    </script>
-</head>
-
-<body class="bg-gray-100 font-sans">
-    <?php
+    
 include_once '../inc/database.php';  
 
 // Fetch events
@@ -106,20 +91,37 @@ if (isset($_POST['submit'])) {
         if (empty($errors)) {
             $success = true;
             echo "<script>
-                Swal.fire({
-                    title: 'Files Uploaded Successfully',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    window.location.href = 'create-event-media.php';
-                });
+                window.location.href = 'event-media?created=1';
             </script>";
         }
     }
 }    
 ?>
 
-    <body>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healing Heart Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Add SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    // Toggle sidebar
+    function toggleSidebar() {
+        document.getElementById("sidebar").classList.toggle("-translate-x-full");
+    }
+    </script>
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+
+   
 
 
         <div class="flex h-screen overflow-hidden">
