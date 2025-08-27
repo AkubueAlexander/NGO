@@ -80,6 +80,8 @@
         .transition-all {
             transition: all 0.3s ease;
         }
+
+        
     </style>
 </head>
 <body class="text-gray-700">
@@ -96,11 +98,11 @@
                 </a>
 
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-pink-600 transition">Home</a>
-                    <a href="#about" class="text-gray-700 hover:text-pink-600 transition">About</a>
-                    <a href="#services" class="text-gray-700 hover:text-pink-600 transition">Services</a>
-                    <a href="#impact" class="text-gray-700 hover:text-pink-600 transition">Impact</a>
-                    <a href="#contact" class="text-gray-700 hover:text-pink-600 transition">Contact</a>
+                    <a href="home" class="text-gray-700 hover:text-pink-600 transition">Home</a>
+                    <a href="about" class="text-gray-700 hover:text-pink-600 transition">About</a>
+                    <a href="service" class="text-gray-700 hover:text-pink-600 transition">Services</a>
+                    <a href="impact" class="text-gray-700 hover:text-pink-600 transition">Impact</a>
+                    <a href="contact" class="text-gray-700 hover:text-pink-600 transition">Contact</a>
                     <a href="volunteer" class="text-gray-700 hover:text-pink-600 transition">Volunteer</a>
                 </div>
 
@@ -124,16 +126,16 @@
             <div class="md:hidden hidden bg-white absolute left-0 right-0 top-16 p-6 shadow-lg rounded-b-lg"
                 id="mobile-menu">
                 <div class="flex flex-col space-y-4">
-                    <a href="#home" class="text-gray-700 hover:text-pink-600 transition">Home</a>
-                    <a href="#about" class="text-gray-700 hover:text-pink-600 transition">About</a>
-                    <a href="#services" class="text-gray-700 hover:text-pink-600 transition">Services</a>
-                    <a href="#impact" class="text-gray-700 hover:text-pink-600 transition">Impact</a>
-                    <a href="#contact" class="text-gray-700 hover:text-pink-600 transition">Contact</a>
+                    <a href="index" class="text-gray-700 hover:text-pink-600 transition">Home</a>
+                    <a href="about" class="text-gray-700 hover:text-pink-600 transition">About</a>
+                    <a href="service" class="text-gray-700 hover:text-pink-600 transition">Services</a>
+                    <a href="impact" class="text-gray-700 hover:text-pink-600 transition">Impact</a>
+                    <a href="contact" class="text-gray-700 hover:text-pink-600 transition">Contact</a>
                     <a href="volunteer" class="text-gray-700 hover:text-pink-600 transition">Volunteer</a>
                     <div class="pt-4 border-t border-gray-100 flex space-x-2">
-                        <a href="#donate"
+                        <a href="index#donate"
                             class="flex-1 text-center px-4 py-2 border border-pink-500 text-pink-600 rounded-full hover:bg-pink-50 transition">Donate</a>
-                        <a href="#"
+                        <a href="volunteer"
                             class="flex-1 text-center px-4 py-2 bg-pink-600 text-white rounded-full hover:bg-pink-700 transition">Volunteer</a>
                     </div>
                 </div>
@@ -277,95 +279,151 @@
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="py-20 bg-gradient-to-r from-primary to-accent">
-        <div class="container mx-auto px-4 text-center animate-fade-in">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 heading-font">Join Us in Making a Difference</h2>
-            <p class="text-xl text-white mb-10 max-w-3xl mx-auto opacity-90">
-                Your support can transform the lives of widows and their children. Together, we can create a world of dignity and hope.
+   <!-- Newsletter -->
+    <section class="py-16 bg-pink-600">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4 font-playfair">
+                Stay Updated
+            </h2>
+            <p class="text-white/90 max-w-2xl mx-auto mb-8">
+                Subscribe to our newsletter to receive updates on our programs,
+                success stories, and upcoming events.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button class="bg-white text-primary font-semibold px-8 py-4 rounded-full hover:bg-gray-100 hover:shadow-lg transition-all duration-300">
-                    Donate Now
-                </button>
-                <button class="bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-full hover:bg-white hover:text-primary transition-all duration-300">
-                    Volunteer
+
+            <div class="max-w-lg mx-auto flex">
+                <input type="email" placeholder="Your email address"
+                    class="flex-1 py-3 px-4 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-pink-300" />
+                <button class="bg-pink-800 text-white py-3 px-6 rounded-r-lg hover:bg-pink-900 transition">
+                    Subscribe
                 </button>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between border-b border-pink-900 pb-12 mb-8">
-                <div class="mb-8 md:mb-0">
-                    <div class="flex items-center space-x-2 mb-4">
-                        <i class="fas fa-heart text-2xl heart-beat text-primary"></i>
-                        <span class="text-xl font-semibold heading-font">Healing Hearts</span>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <span
+                            class="mr-3 h-8 w-8 rounded-full bg-pink-500 flex items-center justify-center text-white font-bold">
+                            <img src="logo.png" alt="logo">
+                        </span>
+                        <span class="text-2xl font-bold text-white font-playfair">Healing Hearts</span>
                     </div>
-                    <p class="max-w-xs text-pink-200">
-                        Restoring dignity and hope to widows and their children since 2008.
+                    <p class="text-gray-400">
+                        Empowering widows and their children to achieve economic
+                        self-sufficiency through comprehensive support services.
                     </p>
                 </div>
-                
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-12">
-                    <div>
-                        <h3 class="text-lg font-semibold mb-4 text-primary">Quick Links</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="hover:text-secondary transition-all">Home</a></li>
-                            <li><a href="#" class="hover:text-secondary transition-all">About</a></li>
-                            <li><a href="#" class="hover:text-secondary transition-all">Programs</a></li>
-                            <li><a href="#" class="hover:text-secondary transition-all">Contact</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-lg font-semibold mb-4 text-primary">Connect</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="hover:text-secondary transition-all">Facebook</a></li>
-                            <li><a href="#" class="hover:text-secondary transition-all">Twitter</a></li>
-                            <li><a href="#" class="hover:text-secondary transition-all">Instagram</a></li>
-                            <li><a href="#" class="hover:text-secondary transition-all">LinkedIn</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-lg font-semibold mb-4 text-primary">Contact</h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-start">
-                                <i class="fas fa-map-marker-alt mt-1 mr-2 text-secondary"></i>
-                                <span>Enugu, Nigeria</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-phone-alt mt-1 mr-2 text-secondary"></i>
-                                <span>+2349030882398, +2348033285060</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-envelope mt-1 mr-2 text-secondary"></i>
-                                <span>ealingheartswindowsfoundation@gmail.com</span>
-                            </li>
-                        </ul>
-                    </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="index" class="text-gray-400 hover:text-white transition">Home</a>
+                        </li>
+                        <li>
+                            <a href="about" class="text-gray-400 hover:text-white transition">About Us</a>
+                        </li>
+                        <li>
+                            <a href="service" class="text-gray-400 hover:text-white transition">Our Services</a>
+                        </li>
+                        <li>
+                            <a href="index#donate" class="text-gray-400 hover:text-white transition">Donate</a>
+                        </li>
+                        <li>
+                            <a href="contact" class="text-gray-400 hover:text-white transition">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition">Empowerment Skills</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition">Affordable Housing</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition">Healthcare Support</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition">Legal Services</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition">Training Programs</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact</h3>
+                    <address class="not-italic text-gray-400">
+                        <p class="mb-2">24B Brown & Brown Crescent, Independence Layout </p>
+                        <p class="mb-2">Enugu, Nigeria</p>
+                        <p class="mb-2">support@healinghearts.org</p>
+                        <p>+234 903 088 2398</p>
+                        <p>+234 803 328 5060</p>
+                    </address>
                 </div>
             </div>
-            
-            
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <p class="text-pink-300 mb-4 md:mb-0">
-                    &copy; 2023 Healing Hearts Widows Support Foundation. All rights reserved.
+
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">
+                    © 2025 Healing Hearts Widows Support Foundation. All rights
+                    reserved.
                 </p>
-                <div class="flex space-x-6 text-xl">
-                    <a href="#" class="hover:text-secondary transition-all"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="hover:text-secondary transition-all"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="hover:text-secondary transition-all"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="hover:text-secondary transition-all"><i class="fab fa-linkedin"></i></a>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Sitemap</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
+
+          // Mobile menu toggle
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        mobileMenuButton.addEventListener("click", function() {
+            const isHidden = mobileMenu.classList.contains("hidden");
+            if (isHidden) {
+                mobileMenu.classList.remove("hidden");
+                mobileMenu.classList.add("animate-fade-in");
+            } else {
+                mobileMenu.classList.add("hidden");
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function(e) {
+                e.preventDefault();
+
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains("hidden")) {
+                    mobileMenu.classList.add("hidden");
+                }
+
+                const targetId = this.getAttribute("href");
+                if (targetId === "#") return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: "smooth",
+                    });
+                }
+            });
+        });
         // Simple animation triggers on scroll
         document.addEventListener('DOMContentLoaded', function() {
             const animateElements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');

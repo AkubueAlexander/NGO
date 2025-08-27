@@ -224,18 +224,36 @@ if (isset($_POST['submit'])) {
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-pink-600 text-white py-20">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-4">Become a Volunteer</h2>
-            <p class="text-lg mb-6">Your skills and passion can help us make a lasting difference in communities
-                worldwide.</p>
-            <a href="#apply" class="bg-white text-pink-600 font-semibold px-6 py-3 rounded-full shadow-lg 
-          hover:bg-pink-600 hover:text-white transition duration-300 ease-in-out">
-                Apply Now
-            </a>
-
+    <section class="relative h-96 overflow-hidden">
+        <!-- Background image -->
+        <div class="absolute inset-0">
+            <img src="https://taws-widows.com/wp-content/uploads/2023/10/African-Women.jpg" alt="Background"
+                class="w-full h-full object-cover object-top">
+            <!-- Blended overlay -->
+            <div class="absolute inset-0 bg-pink-600 opacity-70"></div>
         </div>
+
+        <!-- Content -->
+        <div class="relative z-10 h-full flex items-center justify-center text-center px-4">
+            <div class="max-w-4xl">
+                <h2 class="text-4xl font-bold mb-4 text-white">Become a Volunteer</h2>
+                <p class="text-lg mb-6 text-white">
+                    Your skills and passion can help us make a lasting difference in communities worldwide.
+                </p>
+                <a href="#apply" class="bg-white text-pink-600 font-semibold px-6 py-3 rounded-full shadow-lg 
+                      hover:bg-pink-600 hover:text-white transition duration-300 ease-in-out">
+                    Apply Now
+                </a>
+            </div>
+        </div>
+
+        <!-- Bottom gradient finish -->
+        <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent"></div>
     </section>
+
+
+
+
 
     <!-- Why Volunteer -->
     <section class="max-w-6xl mx-auto px-6 py-16">
@@ -292,7 +310,7 @@ if (isset($_POST['submit'])) {
             <div>
                 <label class="block text-gray-700 font-medium mb-2">Full Name</label>
                 <input type="text" class="w-full border border-gray-300 rounded-lg p-3 focus:ring focus:ring-yellow-200"
-                   name="fullName" placeholder="Enter your name" />
+                    name="fullName" placeholder="Enter your name" />
             </div>
             <div>
                 <label class="block text-gray-700 font-medium mb-2">Email Address</label>
@@ -302,7 +320,8 @@ if (isset($_POST['submit'])) {
             </div>
             <div>
                 <label class="block text-gray-700 font-medium mb-2">Area of Interest</label>
-                <select class="w-full border border-gray-300 rounded-lg p-3 focus:ring focus:ring-yellow-200" name="areaOfInterest">
+                <select class="w-full border border-gray-300 rounded-lg p-3 focus:ring focus:ring-yellow-200"
+                    name="areaOfInterest">
                     <option>Select Interest</option>
                     <option>Community Outreach</option>
                     <option>Event Support</option>
@@ -312,7 +331,7 @@ if (isset($_POST['submit'])) {
             <div>
                 <label class="block text-gray-700 font-medium mb-2">Message</label>
                 <textarea class="w-full border border-gray-300 rounded-lg p-3 focus:ring focus:ring-yellow-200" rows="4"
-                  name="message"  placeholder="Tell us why you'd like to volunteer"></textarea>
+                    name="message" placeholder="Tell us why you'd like to volunteer"></textarea>
             </div>
             <button type="submit" name="submit"
                 class="w-full bg-pink-700 text-white font-semibold py-3 rounded-lg hover:bg-pink-500 transition">

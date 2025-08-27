@@ -161,6 +161,8 @@ use PHPMailer\PHPMailer\Exception;
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
+
+        
     @keyframes pulse {
         0% {
             transform: scale(1);
@@ -306,11 +308,11 @@ use PHPMailer\PHPMailer\Exception;
                 </a>
 
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-pink-600 transition">Home</a>
-                    <a href="#about" class="text-gray-700 hover:text-pink-600 transition">About</a>
-                    <a href="#services" class="text-gray-700 hover:text-pink-600 transition">Services</a>
-                    <a href="#impact" class="text-gray-700 hover:text-pink-600 transition">Impact</a>
-                    <a href="#contact" class="text-gray-700 hover:text-pink-600 transition">Contact</a>
+                    <a href="index" class="text-gray-700 hover:text-pink-600 transition">Home</a>
+                    <a href="about" class="text-gray-700 hover:text-pink-600 transition">About</a>
+                    <a href="service" class="text-gray-700 hover:text-pink-600 transition">Services</a>
+                    <a href="impact" class="text-gray-700 hover:text-pink-600 transition">Impact</a>
+                    <a href="contact" class="text-gray-700 hover:text-pink-600 transition">Contact</a>
                     <a href="volunteer" class="text-gray-700 hover:text-pink-600 transition">Volunteer</a>
                 </div>
 
@@ -334,11 +336,11 @@ use PHPMailer\PHPMailer\Exception;
             <div class="md:hidden hidden bg-white absolute left-0 right-0 top-16 p-6 shadow-lg rounded-b-lg"
                 id="mobile-menu">
                 <div class="flex flex-col space-y-4">
-                    <a href="#home" class="text-gray-700 hover:text-pink-600 transition">Home</a>
-                    <a href="#about" class="text-gray-700 hover:text-pink-600 transition">About</a>
-                    <a href="#services" class="text-gray-700 hover:text-pink-600 transition">Services</a>
-                    <a href="#impact" class="text-gray-700 hover:text-pink-600 transition">Impact</a>
-                    <a href="#contact" class="text-gray-700 hover:text-pink-600 transition">Contact</a>
+                    <a href="index" class="text-gray-700 hover:text-pink-600 transition">Home</a>
+                    <a href="about" class="text-gray-700 hover:text-pink-600 transition">About</a>
+                    <a href="service" class="text-gray-700 hover:text-pink-600 transition">Services</a>
+                    <a href="impact" class="text-gray-700 hover:text-pink-600 transition">Impact</a>
+                    <a href="contact" class="text-gray-700 hover:text-pink-600 transition">Contact</a>
                     <a href="volunteer" class="text-gray-700 hover:text-pink-600 transition">Volunteer</a>
                     <div class="pt-4 border-t border-gray-100 flex space-x-2">
                         <a href="#donate"
@@ -507,7 +509,7 @@ use PHPMailer\PHPMailer\Exception;
                         Comprehensive training in entrepreneurship, financial literacy,
                         and vocational skills to build sustainable livelihoods.
                     </p>
-                    <a href="#" class="text-pink-600 font-medium inline-flex items-center">
+                    <a href="service" class="text-pink-600 font-medium inline-flex items-center">
                         Learn more
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
@@ -534,7 +536,7 @@ use PHPMailer\PHPMailer\Exception;
                         Transitional and permanent housing solutions with financial
                         counseling to ensure long-term stability.
                     </p>
-                    <a href="#" class="text-pink-600 font-medium inline-flex items-center">
+                    <a href="service" class="text-pink-600 font-medium inline-flex items-center">
                         Learn more
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
@@ -561,7 +563,7 @@ use PHPMailer\PHPMailer\Exception;
                         Access to healthcare services, mental health counseling, and
                         wellness programs for holistic wellbeing.
                     </p>
-                    <a href="#" class="text-pink-600 font-medium inline-flex items-center">
+                    <a href="service" class="text-pink-600 font-medium inline-flex items-center">
                         Learn more
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
@@ -586,7 +588,7 @@ use PHPMailer\PHPMailer\Exception;
                         Professional legal assistance with inheritance rights, property
                         claims, and other critical legal matters.
                     </p>
-                    <a href="#" class="text-pink-600 font-medium inline-flex items-center">
+                    <a href="service" class="text-pink-600 font-medium inline-flex items-center">
                         Learn more
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
@@ -613,7 +615,7 @@ use PHPMailer\PHPMailer\Exception;
                         Skill development in high-demand sectors to enhance employability
                         and increase earning potential.
                     </p>
-                    <a href="#" class="text-pink-600 font-medium inline-flex items-center">
+                    <a href="service" class="text-pink-600 font-medium inline-flex items-center">
                         Learn more
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
@@ -640,7 +642,7 @@ use PHPMailer\PHPMailer\Exception;
                         Microfinance initiatives to help widows start small businesses
                         without the burden of traditional loan interest.
                     </p>
-                    <a href="#" class="text-pink-600 font-medium inline-flex items-center">
+                    <a href="service" class="text-pink-600 font-medium inline-flex items-center">
                         Learn more
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">

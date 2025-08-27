@@ -100,11 +100,11 @@
                 </a>
 
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-pink-600 transition">Home</a>
-                    <a href="#about" class="text-gray-700 hover:text-pink-600 transition">About</a>
-                    <a href="#services" class="text-gray-700 hover:text-pink-600 transition">Services</a>
-                    <a href="#impact" class="text-gray-700 hover:text-pink-600 transition">Impact</a>
-                    <a href="#contact" class="text-gray-700 hover:text-pink-600 transition">Contact</a>
+                    <a href="index" class="text-gray-700 hover:text-pink-600 transition">Home</a>
+                    <a href="about" class="text-gray-700 hover:text-pink-600 transition">About</a>
+                    <a href="services" class="text-gray-700 hover:text-pink-600 transition">Services</a>
+                    <a href="impact" class="text-gray-700 hover:text-pink-600 transition">Impact</a>
+                    <a href="contact" class="text-gray-700 hover:text-pink-600 transition">Contact</a>
                     <a href="volunteer" class="text-gray-700 hover:text-pink-600 transition">Volunteer</a>
                 </div>
 
@@ -129,11 +129,11 @@
             <div class="md:hidden hidden bg-white absolute left-0 right-0 top-16 p-6 shadow-lg rounded-b-lg"
                 id="mobile-menu">
                 <div class="flex flex-col space-y-4">
-                    <a href="#home" class="text-gray-700 hover:text-pink-600 transition">Home</a>
-                    <a href="#about" class="text-gray-700 hover:text-pink-600 transition">About</a>
-                    <a href="#services" class="text-gray-700 hover:text-pink-600 transition">Services</a>
-                    <a href="#impact" class="text-gray-700 hover:text-pink-600 transition">Impact</a>
-                    <a href="#contact" class="text-gray-700 hover:text-pink-600 transition">Contact</a>
+                    <a href="index" class="text-gray-700 hover:text-pink-600 transition">Home</a>
+                    <a href="about" class="text-gray-700 hover:text-pink-600 transition">About</a>
+                    <a href="service" class="text-gray-700 hover:text-pink-600 transition">Services</a>
+                    <a href="impact" class="text-gray-700 hover:text-pink-600 transition">Impact</a>
+                    <a href="contact" class="text-gray-700 hover:text-pink-600 transition">Contact</a>
                     <a href="volunteer" class="text-gray-700 hover:text-pink-600 transition">Volunteer</a>
                     <div class="pt-4 border-t border-gray-100 flex space-x-2">
                         <a href="#donate"
