@@ -134,7 +134,7 @@ include_once '../inc/database.php';
                     <h1 class="text-xl md:text-2xl font-semibold text-gray-800">Dashboard</h1>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button
+                    <button  onclick="window.location.href='logout';"
                         class="px-3 md:px-4 py-2 bg-pink-500 text-white rounded-lg shadow hover:bg-pink-700 transition flex items-center">
                         <i class="fa-solid fa-right-from-bracket mr-2"></i> <span class="hidden sm:inline">Logout</span>
                     </button>

@@ -134,7 +134,7 @@ if (isset($_POST['edit'])) {
                     <h1 class="text-xl md:text-2xl font-semibold text-gray-800">Dashboard</h1>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button
+                    <button  onclick="window.location.href='logout';"
                         class="px-3 md:px-4 py-2 bg-pink-500 text-white rounded-lg shadow hover:bg-pink-700 transition flex items-center">
                         <i class="fa-solid fa-right-from-bracket mr-2"></i> <span class="hidden sm:inline">Logout</span>
                     </button>
@@ -291,7 +291,7 @@ if (isset($_POST['edit'])) {
                     <!-- Pagination -->
                     <div class="flex flex-col md:flex-row justify-between items-center mt-6 space-y-4 md:space-y-0">
                         <p class="text-sm text-gray-600"
-                            x-text="`Showing ${startIndex + 1} to ${Math.min(endIndex(), filtered.length)} of ${filtered.length} orders`">
+                            x-text="`Showing ${startIndex + 1} to ${Math.min(endIndex(), filtered.length)} of ${filtered.length} volunteers`">
                         </p>
                         <div class="flex items-center space-x-1">
                             <button class="px-3 py-1 border rounded hover:bg-gray-200" @click="prevPage"

@@ -2,6 +2,7 @@
 include_once '../inc/database.php';
 $error = '';
 
+
 if (isset($_POST['submit'])) {
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
@@ -88,7 +89,7 @@ if (isset($_POST['submit'])) {
 
     <!-- Login card -->
     <div class="relative w-full max-w-md animate-fade-in">
-        <div class="bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden">
+        <div class="bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden mr-10 ml-10">
 
             <!-- Header with logo -->
             <div class="bg-pink-600 text-white p-8 text-center">
