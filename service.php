@@ -191,15 +191,27 @@
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <section class="py-20 bg-pink-600 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold mb-4 heading-font">Support Our Programs</h2>
-    <p class="max-w-2xl mx-auto mb-8">Your donations and volunteer efforts help us continue empowering widows with the skills, resources, and opportunities they need to thrive.</p>
-    <div class="space-x-4">
-      <a href="index#donate" class="px-6 py-3 bg-white text-pink-600 font-semibold rounded-full hover:bg-pink-100">Donate Now</a>
-      <a href="volunteer" class="px-6 py-3 border border-white font-semibold rounded-full hover:bg-white hover:text-pink-600">Become a Volunteer</a>
-    </div>
-  </section>
+  <!-- Newsletter -->
+    <section class="py-16 bg-pink-600">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4 font-playfair">
+                Stay Updated
+            </h2>
+            <p class="text-white/90 max-w-2xl mx-auto mb-8">
+                Subscribe to our newsletter to receive updates on our programs,
+                success stories, and upcoming events.
+            </p>
+
+            <div class="max-w-lg mx-auto flex flex-col sm:flex-row">
+                <input type="email" placeholder="Your email address"
+                    class="w-full sm:flex-1 py-3 px-4 rounded-t-lg sm:rounded-t-none sm:rounded-l-lg focus:outline-none focus:ring-2 focus:ring-pink-300" />
+                <button
+                    class="mt-4 bg-pink-800 text-white py-3 px-6 rounded-b-lg sm:rounded-b-none sm:rounded-r-lg hover:bg-pink-900 transition w-full sm:w-auto">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </section>
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-white py-12">

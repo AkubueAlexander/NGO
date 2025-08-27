@@ -161,8 +161,6 @@ use PHPMailer\PHPMailer\Exception;
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-
-        
     @keyframes pulse {
         0% {
             transform: scale(1);
@@ -458,9 +456,9 @@ use PHPMailer\PHPMailer\Exception;
                         </div>
                     </div>
 
-                    <div class="flex space-x-4">
+                    <div class="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
                         <a href="#services"
-                            class="px-6 py-3 bg-pink-600 text-white rounded-full hover:bg-pink-700 transition flex items-center">
+                            class="px-6 py-3 bg-pink-600 text-white rounded-full hover:bg-pink-700 transition flex items-center justify-center">
                             Our Services
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -469,10 +467,11 @@ use PHPMailer\PHPMailer\Exception;
                             </svg>
                         </a>
                         <a href="#impact"
-                            class="px-6 py-3 border border-pink-600 text-pink-600 rounded-full hover:bg-pink-50 transition flex items-center">
+                            class="px-6 py-3 border border-pink-600 text-pink-600 rounded-full hover:bg-pink-50 transition flex items-center justify-center">
                             Our Impact
                         </a>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -747,7 +746,8 @@ use PHPMailer\PHPMailer\Exception;
                         <?php echo $row->title ?>
                     </figcaption>
 
-                    <button onclick="window.location.href='event-detail?title=<?php echo $row->title ?>& id=<?php echo $row->id ?>'"
+                    <button
+                        onclick="window.location.href='event-detail?title=<?php echo $row->title ?>& id=<?php echo $row->id ?>'"
                         class="mt-3 mb-4 block mx-auto px-4 py-2 text-sm font-medium text-white bg-rose-600 rounded-xl hover:bg-rose-700 transition">
                         View Detail
                     </button>
@@ -1109,15 +1109,17 @@ use PHPMailer\PHPMailer\Exception;
                 success stories, and upcoming events.
             </p>
 
-            <div class="max-w-lg mx-auto flex">
+            <div class="max-w-lg mx-auto flex flex-col sm:flex-row">
                 <input type="email" placeholder="Your email address"
-                    class="flex-1 py-3 px-4 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-pink-300" />
-                <button class="bg-pink-800 text-white py-3 px-6 rounded-r-lg hover:bg-pink-900 transition">
+                    class="w-full sm:flex-1 py-3 px-4 rounded-t-lg sm:rounded-t-none sm:rounded-l-lg focus:outline-none focus:ring-2 focus:ring-pink-300" />
+                <button
+                    class="mt-4 bg-pink-800 text-white py-3 px-6 rounded-b-lg sm:rounded-b-none sm:rounded-r-lg hover:bg-pink-900 transition w-full sm:w-auto">
                     Subscribe
                 </button>
             </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">

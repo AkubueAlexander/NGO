@@ -340,7 +340,7 @@ if (isset($_POST['submit'])) {
         </form>
     </section>
 
-    <!-- Newsletter -->
+   <!-- Newsletter -->
     <section class="py-16 bg-pink-600">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-2xl md:text-3xl font-bold text-white mb-4 font-playfair">
@@ -351,10 +351,11 @@ if (isset($_POST['submit'])) {
                 success stories, and upcoming events.
             </p>
 
-            <div class="max-w-lg mx-auto flex">
+            <div class="max-w-lg mx-auto flex flex-col sm:flex-row">
                 <input type="email" placeholder="Your email address"
-                    class="flex-1 py-3 px-4 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-pink-300" />
-                <button class="bg-pink-800 text-white py-3 px-6 rounded-r-lg hover:bg-pink-900 transition">
+                    class="w-full sm:flex-1 py-3 px-4 rounded-t-lg sm:rounded-t-none sm:rounded-l-lg focus:outline-none focus:ring-2 focus:ring-pink-300" />
+                <button
+                    class="mt-4 bg-pink-800 text-white py-3 px-6 rounded-b-lg sm:rounded-b-none sm:rounded-r-lg hover:bg-pink-900 transition w-full sm:w-auto">
                     Subscribe
                 </button>
             </div>

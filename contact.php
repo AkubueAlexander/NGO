@@ -378,14 +378,13 @@ if (isset($_POST['sendMessage'])) {
                 </div>
             </div>
             <!-- Google Map -->
-      <div class="mt-16">
-        <iframe class="w-full h-80 rounded-xl shadow-md border"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3941.349164394799!2d7.4951!3d6.4483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1044a37395c7f6e9%3A0xd0bb7f6c36d5f4c7!2sEnugu!5e0!3m2!1sen!2sng!4v1674891234567"
-          allowfullscreen="" loading="lazy"></iframe>
-      </div>
+            <div class="mt-16">
+                <iframe class="w-full h-80 rounded-xl shadow-md border"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3941.349164394799!2d7.4951!3d6.4483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1044a37395c7f6e9%3A0xd0bb7f6c36d5f4c7!2sEnugu!5e0!3m2!1sen!2sng!4v1674891234567"
+                    allowfullscreen="" loading="lazy"></iframe>
+            </div>
         </div>
     </section>
-
 
 
 
@@ -402,15 +401,17 @@ if (isset($_POST['sendMessage'])) {
                 success stories, and upcoming events.
             </p>
 
-            <div class="max-w-lg mx-auto flex">
+            <div class="max-w-lg mx-auto flex flex-col sm:flex-row">
                 <input type="email" placeholder="Your email address"
-                    class="flex-1 py-3 px-4 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-pink-300" />
-                <button class="bg-pink-800 text-white py-3 px-6 rounded-r-lg hover:bg-pink-900 transition">
+                    class="w-full sm:flex-1 py-3 px-4 rounded-t-lg sm:rounded-t-none sm:rounded-l-lg focus:outline-none focus:ring-2 focus:ring-pink-300" />
+                <button
+                    class="mt-4 bg-pink-800 text-white py-3 px-6 rounded-b-lg sm:rounded-b-none sm:rounded-r-lg hover:bg-pink-900 transition w-full sm:w-auto">
                     Subscribe
                 </button>
             </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
@@ -498,60 +499,61 @@ if (isset($_POST['sendMessage'])) {
         </div>
     </footer>
 
- <script>
+    <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-          // Mobile menu toggle
-        const mobileMenuButton = document.getElementById("mobile-menu-button");
-        const mobileMenu = document.getElementById("mobile-menu");
+    mobileMenuButton.addEventListener("click", function() {
+        const isHidden = mobileMenu.classList.contains("hidden");
+        if (isHidden) {
+            mobileMenu.classList.remove("hidden");
+            mobileMenu.classList.add("animate-fade-in");
+        } else {
+            mobileMenu.classList.add("hidden");
+        }
+    });
 
-        mobileMenuButton.addEventListener("click", function() {
-            const isHidden = mobileMenu.classList.contains("hidden");
-            if (isHidden) {
-                mobileMenu.classList.remove("hidden");
-                mobileMenu.classList.add("animate-fade-in");
-            } else {
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function(e) {
+            e.preventDefault();
+
+            // Close mobile menu if open
+            if (!mobileMenu.classList.contains("hidden")) {
                 mobileMenu.classList.add("hidden");
             }
-        });
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-            anchor.addEventListener("click", function(e) {
-                e.preventDefault();
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
 
-                // Close mobile menu if open
-                if (!mobileMenu.classList.contains("hidden")) {
-                    mobileMenu.classList.add("hidden");
-                }
-
-                const targetId = this.getAttribute("href");
-                if (targetId === "#") return;
-
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: "smooth",
-                    });
-                }
-            });
-        });
-        // Simple animation triggers on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const animateElements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('opacity-100');
-                    }
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: "smooth",
                 });
-            }, { threshold: 0.1 });
-            
-            animateElements.forEach(element => {
-                observer.observe(element);
-            });
+            }
         });
+    });
+    // Simple animation triggers on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        const animateElements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+    });
     </script>
 </body>
 
